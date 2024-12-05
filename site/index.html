@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="None">
+        
+        
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>Kubernetes Documentation</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body class="homepage">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href=".">Kubernetes Documentation</a>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-light">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#introduction-to-kubernetes" class="nav-link">Introduction to Kubernetes</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#kubernetes-overview" class="nav-link">Kubernetes Overview</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#deploying-kubernetes" class="nav-link">Deploying Kubernetes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#kubernetes-architecture" class="nav-link">Kubernetes Architecture</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#interacting-with-kubernetes" class="nav-link">Interacting with Kubernetes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#pods" class="nav-link">Pods</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#services" class="nav-link">Services</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#deployments" class="nav-link">Deployments</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="introduction-to-kubernetes">Introduction to Kubernetes</h1>
+<h2 id="kubernetes-overview">Kubernetes Overview</h2>
+<p>Open-source conainer orchestration tool designed to automate deploying, scaling, and operating containerized applications.</p>
+<ul>
+<li>Kubernetes is a distriubted system. Multiple machines (physical or virtual) maybe used to build a cluster. </li>
+<li>Kubernetes places containers on machine based on schedules and availability.</li>
+<li>Kubernetes can move containers as machines are added/removed.</li>
+<li>Can use different container runtimes. It is container runtime agnostic.</li>
+<li>Modular, extensive design.</li>
+</ul>
+<h4 id="using-kubernetes">Using Kubernetes</h4>
+<ul>
+<li>Declarative Configuration</li>
+<li>Deploy Containers fast</li>
+<li>Configure networking</li>
+<li>Scale and Expose services</li>
+</ul>
+<h4 id="kubernetes-for-operations">Kubernetes for Operations</h4>
+<p>Kubernetes offers multiple features for Operations people.</p>
+<ul>
+<li>Automatically recover failed machines</li>
+<li>Built-in Support for Machine Maintenance</li>
+<li>Join Clusters with Federation</li>
+</ul>
+<h4 id="kubernetes-feature-highlights">Kubernetes Feature Highlights</h4>
+<ul>
+<li>Automated deployment rollout and rollback</li>
+<li>Seamless horizontal scaling</li>
+<li>Secrets Management</li>
+<li>Service discovery and load balancing</li>
+<li>Simple log collection</li>
+<li>Stateful application support</li>
+<li>Persistent volume management</li>
+</ul>
+<p><strong>AWS's alternative of Kubernets:</strong> Amazon ECS (Elastic Container Service). This can be managed by your EC2 or by AWS Fargate.</p>
+<h2 id="deploying-kubernetes">Deploying Kubernetes</h2>
+<h4 id="single-node-kubernetes-clusters">Single-Node Kubernetes Clusters</h4>
+<p>Some options to deploy Kubernetes is - </p>
+<ul>
+<li>Docker (includes a port for running single-node docker clusters)</li>
+<li>Minikube </li>
+<li>Kubeadm (only for Linux machines, will start kubernetes on the host machine, instead of a virtual machine like the prior two methods)</li>
+</ul>
+<h4 id="single-node-kubernets-clusters-for-continuous-integration">Single-Node Kubernets Clusters for Continuous Integration</h4>
+<ul>
+<li>Create ephemeral clusters that start quickly and are in a clean state.</li>
+<li>Kubernetes-in-Docker (KinD) is made for this case.</li>
+</ul>
+<h4 id="multi-node-kubernetes-clusters">Multi-Node Kubernetes Clusters</h4>
+<ul>
+<li>For production workloads</li>
+<li>Horizontal scaling</li>
+<li>Tolerate Node Failures</li>
+</ul>
+<h2 id="kubernetes-architecture">Kubernetes Architecture</h2>
+<ul>
+<li>The top of the Kubernetes architecture is a <strong>Cluster</strong>. Cluster referes to all of the machines collectively and can be thought of as the entire running system.</li>
+<li>Nodes are the machines in the cluster. Nodes can be categorized as <strong>workers</strong> or <strong>masters</strong>.</li>
+<li>Worker nodes include software to run containers managed by the Kubernetes control plane.</li>
+<li>Master nodes run the control plane.</li>
+<li>The control plane is a set of APIs and software that Kubernetes users interact with. The APIs and software are referred to as master components.</li>
+</ul>
+<h4 id="scheduling">Scheduling</h4>
+<p>Control plane schedules containers onto nodes. Scheduling decisions consider required CPU and other factors. Scheduling here refers to the decision process of placing containers onto node.</p>
+<h4 id="kubernetes-pods">Kubernetes Pods</h4>
+<ul>
+<li>Pods are group of Containers. Pods may include one or more containers. All containers in a pod run on the same node. </li>
+<li>Pods are the smallest building block of Kubernetes.</li>
+<li>More complex and useful abstractions built on top of Pods.</li>
+</ul>
+<h4 id="kubernetes-services">Kubernetes services</h4>
+<ul>
+<li>Services define networking rules for exposing groups of Pods - To other pods, To the cluster and To the internet</li>
+</ul>
+<h4 id="kubernetes-deployments">Kubernetes Deployments</h4>
+<ul>
+<li>Manage deploying configuration changes to running Pods. They control rollout and rollback of Pods.</li>
+<li>Horizontal scaling.</li>
+</ul>
+<h2 id="interacting-with-kubernetes">Interacting with Kubernetes</h2>
+<ul>
+<li><strong>The Kubernetes API Server:</strong> Modify cluster state information by sending requests to the Kubernetes API server. The API server is a master componentt that acts as the frontend of the server. It is possible but not common to work directly with the API server.</li>
+<li><strong>Client Libraries:</strong> Client libraries can handle the tediousness of working with the REST API for you. It handles authenticating and managing individual REST API requests and responses.</li>
+<li><strong>Kubernetes Command-Line Tool (Kubectl):</strong> This is by far the most common tool to interact with Kubernetes. With this, you can issue high-level commands that are translated into REST API calls. You can also acccess clusters that are both local and remote. Kubectl also manages all kinds of resources, and provides debugging and introspection features.</li>
+</ul>
+<h4 id="example-kubectl-commands">Example Kubectl commands</h4>
+<ul>
+<li><code>kubectl create</code> to create resources (Pods, Services etc.). We can either specify what we want to create in the commands or in the files. The files are usually in <code>.yaml</code> format and are called manifests.</li>
+<li><code>kubectl delete</code> to delete resources</li>
+<li><code>kubectl get</code> to get a list of resources of a given type. For example - <code>kubectl get pods</code> gets all the pods in the current namespace</li>
+<li><code>kubectl describe</code> to get print a detailed info about a resource(s). For example - <code>kubectl describe &lt;resource-type&gt; &lt;resource-name&gt;</code> </li>
+<li><code>kubectl logs</code> to print container logs</li>
+</ul>
+<h2 id="pods">Pods</h2>
+<ul>
+<li>Basic building blocks in Kubernetes</li>
+<li>Contain one or more containers</li>
+<li>Pod containers all share a container network</li>
+<li>One IP address per pod</li>
+</ul>
+<h4 id="whats-in-a-pod-declaration">What's in a Pod Declaration</h4>
+<ul>
+<li>Container Image</li>
+<li>Container Ports</li>
+<li>Container Restart Policy</li>
+<li>Resource Limits</li>
+</ul>
+<h4 id="manifest-files">Manifest Files</h4>
+<p>All kinds of Pod configurations are written in a manifest file, typicall written in <code>.yaml</code>. Manifests can describe all kinds of resources. </p>
+<ul>
+<li><code>apiVersion</code> tells kubernetes which api version is going to be used </li>
+<li><code>kind</code> tells what kind of resource is going to be used</li>
+<li><code>metadata</code> provides relevant information abou the resource. For example - name of the resource</li>
+<li><code>spec</code> contains resource specific properties</li>
+</ul>
+<h4 id="manifests-in-action">Manifests in Action</h4>
+<p>Manifests are send to kubernetes api server to take actions on. <code>kubectl create</code> sends manifest to Kubernetes API Server.</p>
+<p>API server does the following for Pod manifests -</p>
+<ul>
+<li>Select a node with sufficient resources</li>
+<li>Schedule Pod onto a node</li>
+<li>Node pulls Pod's container image</li>
+<li>Start Pod's container</li>
+</ul>
+<h2 id="services">Services</h2>
+<ul>
+<li>A service defines networking rules for accessing Pods in the cluster and from the internet. You can use labels to select a group of pods.</li>
+<li>Service has a fixed IP address.</li>
+<li>Distribute requests across Pods in the group.</li>
+</ul>
+<h4 id="example-manifest">Example Manifest</h4>
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+    labels:
+        app: webserver
+    name: webserver
+spec:
+    ports:
+    - port: 80
+    selector:
+        app: webserver
+    type: NodePort
+</code></pre>
+<h2 id="deployments">Deployments</h2>
+<ul>
+<li>Represent multiple replicas of a Pod. If a replica is deleted, Kubernetes will automatically create a replica for you</li>
+<li>Describe a desired state the Kubernetes needs to achieve</li>
+<li>Deployment Controller master component converges actual state to the desired state.</li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="js/jquery-3.6.0.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script>
+            var base_url = ".",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js"></script>
+        <script src="search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 1.5.3
+Build Date UTC : 2024-12-04 09:54:13.622206+00:00
+-->

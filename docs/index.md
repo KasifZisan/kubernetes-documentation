@@ -146,9 +146,165 @@ spec:
     type: NodePort
 ```
 
+## Multi-Container Pods
+To demonstrate this we are going to take an example - 
+
+- A simple application that increments and prints a count. 
+- The application consists **4 containers split across 3 tiers**. 
+- The Application tier is a Node.js server container. 
+- There is a Data tier that contains a Redis cache. 
+- The Support tier contains the Poller (that polls the server with GET requests) and Counter (that sends POST requests). 
+- All containers configured using the environment variables. 
+
+#### Kubernetes Namespaces
+
+- We can use namespaces to seperate the resources according to users, environments, or applications.
+- Role-based access control (RBAC) to secure access per Namespace.
+- Using namespace is the best practice.
+
+**Example Namespace manifest file** -
+
+```yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+    name: microservice
+    labels:
+        app: counter
+```
+Now create Namepace with ```kubectl create``` command.
+
+**Multi Container Application Manifest**
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+    name: app
+spec:
+    containers:
+        - name: redis
+          image: redis:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 6379
+        
+        - name: server
+          image: 
+          ports:
+            - containerPort: 8080
+          env:
+            - name: REDIS_URL
+              value: redis://localhost:6379
+        
+        - name: counter
+          image:
+          env:
+            - name: API_URL
+              value: http://localhost:8080
+
+        - name: poller
+          image:
+          env:
+            - name: API_URL
+              value: http://localhost:8080
+```
+
+Now if you want to create this ```multi-container pod``` with the ```microservice``` namespace, run this command -
+```bash
+kubectl create -f <manifest-name> -n <namespace-name>
+``` 
+
+If you want to get the pod, type - ```kubectl get -n <namespace> pod <pod-name>```
+
+## Service Discovery
+We will take the example that we did in the last lesson. But in this case - the tiers are not in the same pod, but the three tiers are split into three different pods. So they need to communicate. This is where Service comes in.
+
+**Why Services?**
+
+- Supports multi-Pod design
+- Provides static endpoint for each tier
+- Handles Pod IP changes
+- They also have Load Balancing. They also distribute loads in the group of pods.
+
+To handle this we need to have App tier service in front of the Server tier and Data tier service infront of the Redis tier.
+
+With YAML you can delcare multiple resources in a single manifest by seperating the resources by ```---```. Just like -
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+    name: data-tier
+    labels:
+        app: microservices
+spec:
+    ports:
+    - port: 6379
+      protocol: TCP
+      name: redis
+    selector:
+      tier: data
+    type:
+---
+apiVersion: v1
+kind: Pod
+metadata:
+    name: data-tier
+    labels:
+        app: microservices
+        tier: data
+spec:
+    containers:
+        -  name: redis
+           ports:
+               - containerPort: 6379
+    
+```
+
+If you want to create a service for a specific tier, you can do - 
+```bash 
+kubectl describe service -n <service> <tier name>
+```
+
+#### Service Discovery Meachnisms
+
+- Environment Variables
+    - Services address automatically injected in containers
+    - Environment variables follow naming conventions based on service name
+- DNS 
+    - DNS records automatically created in cluster's DNS
+    - Containers automatically configured to query cluster DNS
+
+So in conclusion -
+
+- Environment variables and DNS allow Pods to discover Services
+- Environment variables for Services available at Pod creation time and in the same Namespace
+- DNS dynamically updated and accross Namespaces.
+
 ## Deployments
 
-- Represent multiple replicas of a Pod. If a replica is deleted, Kubernetes will automatically create a replica for you
+- Represent multiple replicas of a Pod. Pods in deployment are identical and you can create Pods using the manifest. If a replica is deleted, Kubernetes will automatically create a replica for you
 - Describe a desired state the Kubernetes needs to achieve
-- Deployment Controller master component converges actual state to the desired state.
+- Deployment Controller master component converges actual state to the desired state
+- Services seamlessly support scaling. Scaling is best with stateless Pods because they support horizontal scaling. This is possible becaues the state of the app is stored in the Data tier.
+
+To get deployments- ```kubectl get -n <namsepace> deployments```
+
+If we want to scale up certain tiers, we can use the ```scale``` command. Here is how we can do this -
+```bash
+kubectl scale -n <namespace> deployments <tier-name> --replicas=<number-of-replicas>
+```
+
+## Autoscaling
+
+- Scale automatically based on CPU utilization (or custom metrics)
+- Set target CPU along with minimum and max replicas
+- Target CPU is expressed as a percentage of the Pod's CPU request.
+
+#### Metrics
+
+- Autoscaling depends on metrics being collected
+- Metrics Server is one solution for collecting metrics
+- Several manifest files are used to deploy Metrics server
+
+Autoscaling will need the metrics server to run and collect the metrics. And then autoscaler will increaes or decrease replicas based on the metircs and communicate with the Metrics API.
 

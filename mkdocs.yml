@@ -1,2 +1,3 @@
 site_name: Kubernetes Documentation
-
+theme:
+  name: readthedocs
