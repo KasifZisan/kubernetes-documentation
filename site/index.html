@@ -1,92 +1,148 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="None">
-        
-        
-        <link rel="shortcut icon" href="img/favicon.ico">
-        <title>Kubernetes Documentation</title>
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/font-awesome.min.css" rel="stylesheet">
-        <link href="css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-        <script>hljs.highlightAll();</script> 
-    </head>
-
-    <body class="homepage">
-        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
-            <div class="container">
-                <a class="navbar-brand" href=".">Kubernetes Documentation</a>
-
-                <!-- Expanded navigation -->
-                <div id="navbar-collapse" class="navbar-collapse collapse">
-
-                    <ul class="nav navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
-                                <i class="fa fa-search"></i> Search
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
-            <span class="fa fa-angle-down"></span>
-        </button>
-    </div>
-
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="None" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Kubernetes Documentation</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
-    <div id="toc-collapse" class="navbar-collapse collapse card bg-light">
-        <ul class="nav flex-column">
-            
-            <li class="nav-item" data-level="1"><a href="#introduction-to-kubernetes" class="nav-link">Introduction to Kubernetes</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#kubernetes-overview" class="nav-link">Kubernetes Overview</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#deploying-kubernetes" class="nav-link">Deploying Kubernetes</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#kubernetes-architecture" class="nav-link">Kubernetes Architecture</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#interacting-with-kubernetes" class="nav-link">Interacting with Kubernetes</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#pods" class="nav-link">Pods</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#services" class="nav-link">Services</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#deployments" class="nav-link">Deployments</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-              </ul>
-            </li>
-        </ul>
-    </div>
-</div></div>
-                    <div class="col-md-9" role="main">
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Introduction to Kubernetes";
+        var mkdocs_page_input_path = "index.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
 
-<h1 id="introduction-to-kubernetes">Introduction to Kubernetes</h1>
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> Kubernetes Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href=".">Introduction to Kubernetes</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#kubernetes-overview">Kubernetes Overview</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#using-kubernetes">Using Kubernetes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#kubernetes-for-operations">Kubernetes for Operations</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#kubernetes-feature-highlights">Kubernetes Feature Highlights</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#deploying-kubernetes">Deploying Kubernetes</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#single-node-kubernetes-clusters">Single-Node Kubernetes Clusters</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#single-node-kubernets-clusters-for-continuous-integration">Single-Node Kubernets Clusters for Continuous Integration</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#multi-node-kubernetes-clusters">Multi-Node Kubernetes Clusters</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#kubernetes-architecture">Kubernetes Architecture</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#scheduling">Scheduling</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#kubernetes-pods">Kubernetes Pods</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#kubernetes-services">Kubernetes services</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#kubernetes-deployments">Kubernetes Deployments</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#interacting-with-kubernetes">Interacting with Kubernetes</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#example-kubectl-commands">Example Kubectl commands</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#pods">Pods</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#whats-in-a-pod-declaration">What's in a Pod Declaration</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#manifest-files">Manifest Files</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#manifests-in-action">Manifests in Action</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#services">Services</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#example-manifest">Example Manifest</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#multi-container-pods">Multi-Container Pods</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#kubernetes-namespaces">Kubernetes Namespaces</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#service-discovery">Service Discovery</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#service-discovery-meachnisms">Service Discovery Meachnisms</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#deployments">Deployments</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#autoscaling">Autoscaling</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#metrics">Metrics</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">Kubernetes Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Introduction to Kubernetes</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="introduction-to-kubernetes">Introduction to Kubernetes</h1>
 <h2 id="kubernetes-overview">Kubernetes Overview</h2>
 <p>Open-source conainer orchestration tool designed to automate deploying, scaling, and operating containerized applications.</p>
 <ul>
@@ -230,93 +286,196 @@ spec:
         app: webserver
     type: NodePort
 </code></pre>
+<h2 id="multi-container-pods">Multi-Container Pods</h2>
+<p>To demonstrate this we are going to take an example - </p>
+<ul>
+<li>A simple application that increments and prints a count. </li>
+<li>The application consists <strong>4 containers split across 3 tiers</strong>. </li>
+<li>The Application tier is a Node.js server container. </li>
+<li>There is a Data tier that contains a Redis cache. </li>
+<li>The Support tier contains the Poller (that polls the server with GET requests) and Counter (that sends POST requests). </li>
+<li>All containers configured using the environment variables. </li>
+</ul>
+<h4 id="kubernetes-namespaces">Kubernetes Namespaces</h4>
+<ul>
+<li>We can use namespaces to seperate the resources according to users, environments, or applications.</li>
+<li>Role-based access control (RBAC) to secure access per Namespace.</li>
+<li>Using namespace is the best practice.</li>
+</ul>
+<p><strong>Example Namespace manifest file</strong> -</p>
+<pre><code class="language-yaml">apiVersion: v1
+kind: Namespace
+metadata:
+    name: microservice
+    labels:
+        app: counter
+</code></pre>
+<p>Now create Namepace with <code>kubectl create</code> command.</p>
+<p><strong>Multi Container Application Manifest</strong></p>
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+    name: app
+spec:
+    containers:
+        - name: redis
+          image: redis:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 6379
+
+        - name: server
+          image: 
+          ports:
+            - containerPort: 8080
+          env:
+            - name: REDIS_URL
+              value: redis://localhost:6379
+
+        - name: counter
+          image:
+          env:
+            - name: API_URL
+              value: http://localhost:8080
+
+        - name: poller
+          image:
+          env:
+            - name: API_URL
+              value: http://localhost:8080
+</code></pre>
+<p>Now if you want to create this <code>multi-container pod</code> with the <code>microservice</code> namespace, run this command -</p>
+<pre><code class="language-bash">kubectl create -f &lt;manifest-name&gt; -n &lt;namespace-name&gt;
+</code></pre>
+<p>If you want to get the pod, type - <code>kubectl get -n &lt;namespace&gt; pod &lt;pod-name&gt;</code></p>
+<h2 id="service-discovery">Service Discovery</h2>
+<p>We will take the example that we did in the last lesson. But in this case - the tiers are not in the same pod, but the three tiers are split into three different pods. So they need to communicate. This is where Service comes in.</p>
+<p><strong>Why Services?</strong></p>
+<ul>
+<li>Supports multi-Pod design</li>
+<li>Provides static endpoint for each tier</li>
+<li>Handles Pod IP changes</li>
+<li>They also have Load Balancing. They also distribute loads in the group of pods.</li>
+</ul>
+<p>To handle this we need to have App tier service in front of the Server tier and Data tier service infront of the Redis tier.</p>
+<p>With YAML you can delcare multiple resources in a single manifest by seperating the resources by <code>---</code>. Just like -</p>
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+    name: data-tier
+    labels:
+        app: microservices
+spec:
+    ports:
+    - port: 6379
+      protocol: TCP
+      name: redis
+    selector:
+      tier: data
+    type:
+---
+apiVersion: v1
+kind: Pod
+metadata:
+    name: data-tier
+    labels:
+        app: microservices
+        tier: data
+spec:
+    containers:
+        -  name: redis
+           ports:
+               - containerPort: 6379
+
+</code></pre>
+<p>If you want to create a service for a specific tier, you can do - </p>
+<pre><code class="language-bash">kubectl describe service -n &lt;service&gt; &lt;tier name&gt;
+</code></pre>
+<h4 id="service-discovery-meachnisms">Service Discovery Meachnisms</h4>
+<ul>
+<li>Environment Variables<ul>
+<li>Services address automatically injected in containers</li>
+<li>Environment variables follow naming conventions based on service name</li>
+</ul>
+</li>
+<li>DNS <ul>
+<li>DNS records automatically created in cluster's DNS</li>
+<li>Containers automatically configured to query cluster DNS</li>
+</ul>
+</li>
+</ul>
+<p>So in conclusion -</p>
+<ul>
+<li>Environment variables and DNS allow Pods to discover Services</li>
+<li>Environment variables for Services available at Pod creation time and in the same Namespace</li>
+<li>DNS dynamically updated and accross Namespaces.</li>
+</ul>
 <h2 id="deployments">Deployments</h2>
 <ul>
-<li>Represent multiple replicas of a Pod. If a replica is deleted, Kubernetes will automatically create a replica for you</li>
+<li>Represent multiple replicas of a Pod. Pods in deployment are identical and you can create Pods using the manifest. If a replica is deleted, Kubernetes will automatically create a replica for you</li>
 <li>Describe a desired state the Kubernetes needs to achieve</li>
-<li>Deployment Controller master component converges actual state to the desired state.</li>
-</ul></div>
+<li>Deployment Controller master component converges actual state to the desired state</li>
+<li>Services seamlessly support scaling. Scaling is best with stateless Pods because they support horizontal scaling. This is possible becaues the state of the app is stored in the Data tier.</li>
+</ul>
+<p>To get deployments- <code>kubectl get -n &lt;namsepace&gt; deployments</code></p>
+<p>If we want to scale up certain tiers, we can use the <code>scale</code> command. Here is how we can do this -</p>
+<pre><code class="language-bash">kubectl scale -n &lt;namespace&gt; deployments &lt;tier-name&gt; --replicas=&lt;number-of-replicas&gt;
+</code></pre>
+<h2 id="autoscaling">Autoscaling</h2>
+<ul>
+<li>Scale automatically based on CPU utilization (or custom metrics)</li>
+<li>Set target CPU along with minimum and max replicas</li>
+<li>Target CPU is expressed as a percentage of the Pod's CPU request.</li>
+</ul>
+<h4 id="metrics">Metrics</h4>
+<ul>
+<li>Autoscaling depends on metrics being collected</li>
+<li>Metrics Server is one solution for collecting metrics</li>
+<li>Several manifest files are used to deploy Metrics server</li>
+</ul>
+<p>Autoscaling will need the metrics server to run and collect the metrics. And then autoscaler will increaes or decrease replicas based on the metircs and communicate with the Metrics API.</p>
+              
             </div>
-        </div>
+          </div><footer>
 
-        <footer class="col-md-12">
-            <hr>
-            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
-        </footer>
-        <script src="js/jquery-3.6.0.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script>
-            var base_url = ".",
-                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
-        </script>
-        <script src="js/base.js"></script>
-        <script src="search/main.js"></script>
+  <hr/>
 
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="searchModalLabel">Search</h4>
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            </div>
-            <div class="modal-body">
-                <p>From here you can search these documents. Enter your search terms below.</p>
-                <form>
-                    <div class="form-group">
-                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
-                    </div>
-                </form>
-                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
-            </div>
-            <div class="modal-footer">
-            </div>
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
         </div>
-    </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            </div>
-            <div class="modal-body">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th style="width: 20%;">Keys</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="help shortcut"><kbd>?</kbd></td>
-                    <td>Open this help</td>
-                  </tr>
-                  <tr>
-                    <td class="next shortcut"><kbd>n</kbd></td>
-                    <td>Next page</td>
-                  </tr>
-                  <tr>
-                    <td class="prev shortcut"><kbd>p</kbd></td>
-                    <td>Previous page</td>
-                  </tr>
-                  <tr>
-                    <td class="search shortcut"><kbd>s</kbd></td>
-                    <td>Search</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-    </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
 </div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
 
-    </body>
+</body>
 </html>
 
 <!--
 MkDocs version : 1.5.3
-Build Date UTC : 2024-12-04 09:54:13.622206+00:00
+Build Date UTC : 2024-12-05 07:01:53.182673+00:00
 -->
