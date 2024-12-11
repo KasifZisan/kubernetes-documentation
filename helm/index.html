@@ -1,0 +1,613 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.0">
+    
+    
+      
+        <title>Helm - Kubernetes Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.9f615399.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.649f08f9.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="light-blue">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#helm" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Kubernetes Documentation" class="md-header__button md-logo" aria-label="Kubernetes Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Kubernetes Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Helm
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Kubernetes Documentation" class="md-nav__button md-logo" aria-label="Kubernetes Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Kubernetes Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kubernetes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Helm
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Helm
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#benefits" class="md-nav__link">
+    Benefits
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#termninology" class="md-nav__link">
+    Termninology
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commands" class="md-nav__link">
+    Commands
+  </a>
+  
+    <nav class="md-nav" aria-label="Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#helm-repository-management" class="md-nav__link">
+    Helm Repository Management
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#helm-release-management" class="md-nav__link">
+    Helm Release Management
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#helm-chart-management" class="md-nav__link">
+    Helm Chart Management
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#charts" class="md-nav__link">
+    Charts
+  </a>
+  
+    <nav class="md-nav" aria-label="Charts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-a-hosted-chart" class="md-nav__link">
+    Running a Hosted Chart
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#templates" class="md-nav__link">
+    Templates
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#benefits" class="md-nav__link">
+    Benefits
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#termninology" class="md-nav__link">
+    Termninology
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commands" class="md-nav__link">
+    Commands
+  </a>
+  
+    <nav class="md-nav" aria-label="Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#helm-repository-management" class="md-nav__link">
+    Helm Repository Management
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#helm-release-management" class="md-nav__link">
+    Helm Release Management
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#helm-chart-management" class="md-nav__link">
+    Helm Chart Management
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#charts" class="md-nav__link">
+    Charts
+  </a>
+  
+    <nav class="md-nav" aria-label="Charts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-a-hosted-chart" class="md-nav__link">
+    Running a Hosted Chart
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#templates" class="md-nav__link">
+    Templates
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="helm">Helm</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Helm is the package manager for Kubernetes, used to simplify and enhance the deployment experience for deploying resources into a Kubernetes cluster. </p>
+<p>But one might be asking why do we need to use <code>Helm</code> if we already have <code>kubectl</code>? The truth is for complex and intricate deployments we need Helm to simplify and enhance the deployment experience.</p>
+<p>For example, while using <code>kubectl</code> we have to <code>apply</code> the deployment, service, and configMap seperately for each of the tiers. This is not only labor intensive but also prone to error. Depedencies can be forgotten or the installation sequence might be forgotten. Also working with manifests are problematic. There is no parameterization and there is no way to interact with the appilcation lifecycle. All of these creates manifest proliferation. Helm can solve this.</p>
+<p>Helm has a concept of Charts which is essentially a package containing all the related parts of a specific cluster environment. Helm can be used to deploy applications that consist many resources with a single command. Helm takes care of deploying the chart and all its individual resources in a sequenced order. </p>
+<h2 id="benefits">Benefits</h2>
+<p>Helm can literally be deployed with a single command. You can also deploy in different environments with different input values that help you customize the overall behaviour of the application. Helm can help you upgrade existing relases, and also keeps track of the release history for you which allows you to rollback to previous release if required. </p>
+<p>Helm makes it easier to package and distribute charts. After creating the chart you can simply package it up with a chart name. The result is an archive file or chart package which you can host in a chart repository. </p>
+<h2 id="termninology">Termninology</h2>
+<p><strong>Chart</strong></p>
+<p>Chart is the package that has a specific file structure, contains many files and templates which when rendered make up the resources that you deploy into your cluster.</p>
+<p><strong>Repository</strong></p>
+<p>Repository is an HTTP server that hosts and serves <code>index.yaml</code> file together with one or several packaged charts. </p>
+<p><strong>Template</strong></p>
+<p>Templates are used within the chart package that make deployment more general and reusable. By taking a kubernetes manifest and abstracting it into a template. You can also parameterize it, such that while chart installation time, it can take in values that alter the behaviour of the deployed resources. </p>
+<p>This is useful for deployments that need to take place in multiple environments. Templating your resources helps you reduce and minimize manifest proliferation. </p>
+<p><strong>Releases</strong></p>
+<p>When you deploy a chart into a cluster, Helm creates a release for it. A release represent an instance of a chart. The same chart can be used to deploy differently named releases. Releases can be upgraded, rollback and even deleted. </p>
+<p>A release maintains a history of change where every change being its own revision. </p>
+<p><strong>Architecture</strong></p>
+<p>Helm 3 has a client-only architecture. It uses Kubernetes' RBAC - Roll-Based Access Control system to install resources into Pods. Helm directloy communicates with the kubernetes API server and render the templates. Helm 3 also stores release information using Kubernetes Secrets. Whenever a new release happens, a new Kubernetes Secret resource is being created within the same Kubernetes namespace in which the actual deployment took place. </p>
+<h2 id="commands">Commands</h2>
+<pre><code class="language-bash">helm search hub [KEYWORD] #uses fuzzy based searching for publicly registered charts
+helm search repo [KEYWORD] #search for local repos, you can add additional repos for search when - help repo add
+helm pull [CHART]
+helm install [NAME] [CHART]
+helm upgrade [RELEASE] [CHART]
+helm rollback [RELEASE] [REVISION]
+helm uinstall [RELEASE]
+</code></pre>
+<h4 id="helm-repository-management">Helm Repository Management</h4>
+<pre><code class="language-bash">helm repo add [NAME] [URL]
+heml repo list
+helm repo remove [NAME]
+helm repo update # updates the latest information about charts from the respective chart repositories
+helm repo index [DIR] # scan the current directory and generate an index file
+</code></pre>
+<h4 id="helm-release-management">Helm Release Management</h4>
+<pre><code class="language-bash">helm status [RELEASE]
+helm list
+helm history [RELEASE]
+helm get manifest [RELEASE]
+</code></pre>
+<h4 id="helm-chart-management">Helm Chart Management</h4>
+<pre><code class="language-bash">helm create [NAME]
+helm template [NAME] [CHART]
+helm package [CHART]
+helm lint [CHART]
+</code></pre>
+<h2 id="charts">Charts</h2>
+<p>By using the command <code>helm create</code> you can get a file structure of the chart. </p>
+<p>First of all we have the <code>Charts.yaml</code> file where we have top level information of the Chart. </p>
+<pre><code class="language-yaml">apiVersion: 
+name: 
+description:
+type:
+version:
+appVersion:
+</code></pre>
+<p>It must contain a <code>name</code> and a optional <code>description</code> about the chart. The optional <code>type</code> can be either <code>application</code> or <code>library</code>. If the type is <code>application</code> then the chart becomes deployable meaning resources will actually be created in the cluster. A <code>library</code> type means the chart contains reusable functions that can be used in other deployed application charts. The mandatory <code>version</code> field contains the version of the chart itself. The optional <code>appVersion</code> field tracks the version of the application deployed.  </p>
+<p>The <code>charts</code> folder stores other charts that the current chart is dependent on. During deployed, charts contains in the <code>charts</code> directory are deployed into the cluster. </p>
+<p>The <code>values.yaml</code> file contains a structured list of default values -</p>
+<pre><code class="language-yaml">replicaCount: 1
+
+image:
+    repository:
+    pullPolicy:
+
+serviceAccount:
+    create: true
+    annotations: {}
+    name:
+
+service:
+    type:
+    port:
+</code></pre>
+<p>These values go to the various templates that reference them like this - <code>{{ .Values.service.type }}</code></p>
+<p>If you want to override the value stored in the <code>values.yaml</code> file then you can use the <code>install</code> or <code>upgrade</code> command. For example you can use this command - <code>helm upgrade ... \ --set=services.port=9090</code></p>
+<p>The <code>templates</code> folder is used to hold all the templates together. Here each template files contains the defenition of a simple cluster resource. A <code>NOTES.txt</code> file can be put into the <code>templates</code> folder that contains end-user instructions on how the deployed application should be accessed once deployed and running within the cluster. </p>
+<p>The <code>_helpers.tpl</code> contains template partials. Sometimes while creating your own template you can use the same thing multiple times in the same template or differnt template. All of these partials can be stored in a file with an <code>_</code> infront so that it is understood that this is not directly a template. </p>
+<p>The <code>tests</code> file are written to contain the tests that you wrote to exercies once the templates are generated. Tests are implemented typically using a Kubernetes Job. If the tests exit with a zero exit code then it means that the test is successful and if it exists with a non-zero exit code then the test is not successful. Tests are run by the subocmmand - <code>helm test [RELEASE]</code>. These tests can be used to tests traffic paths, network connections, credentials and/or other specific tasks.</p>
+<p>After finishing the development of Chart, the next step is to package it using - <code>helm package [CHART DIR]</code>. After packaging you can install the chart using - <code>helm install</code>. If needed you can also do a dry run of a chart installation <code>helm install ... --dry-run</code>.</p>
+<p>To host a newly created chart into a chart repository, you simply need to create a index chart file using - <code>helm repo index .</code> And then store both the generated <code>index.yaml</code> file together with the chart archive in a directory which is then served up by a standard web server. </p>
+<h4 id="running-a-hosted-chart">Running a Hosted Chart</h4>
+<pre><code class="language-bash">helm repo add local http://127.0.0.1:8000
+helm repo update
+helm search repo cloudcademy
+
+helm install ca-demo1 local/cloudcademyapp
+</code></pre>
+<h2 id="templates">Templates</h2>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.4e0fa4ba.min.js"></script>
+      
+    
+  </body>
+</html>
