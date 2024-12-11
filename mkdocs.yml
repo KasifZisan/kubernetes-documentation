@@ -1,3 +1,11 @@
 site_name: Kubernetes Documentation
+nav:
+  - Kubernetes: index.md
+  - Helm: helm.md
 theme:
-  name: mkdocs
+  name: material
+  nav_style: dark
+  palette:
+    scheme: slate
+    primary: indigo
+    accent: light blue

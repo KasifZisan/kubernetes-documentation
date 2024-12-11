@@ -71,7 +71,7 @@ Control plane schedules containers onto nodes. Scheduling decisions consider req
 - Pods are the smallest building block of Kubernetes.
 - More complex and useful abstractions built on top of Pods.
 
-#### Kubernetes services
+#### Kubernetes Services
 - Services define networking rules for exposing groups of Pods - To other pods, To the cluster and To the internet
 
 #### Kubernetes Deployments
@@ -328,7 +328,7 @@ spec:
   strategy:
     rollingUpdate:
 
-      # how many replicas over the desired total are allowed during a rollout
+      # how many pods over the desired total (no. of replicas) are allowed during a rollout
       # a higer surge allows new pods to be created than older pods to be deleted
       maxSurge: 25% 
 
@@ -445,3 +445,22 @@ Kubernetes provides us with ConfigMaps and Secrets to store the Configurations a
 - Commonly paired with Grafana for visualizations and Dashboards
 - Define alert rules and send notifications
 - Easily installed via Helm charts
+
+## Pods in kube-system namespace
+
+```bash
+kubectl get pods --namespace=kube-system
+```
+
+All of the components of the cluster are running in pods in the kube-system namespace:
+
+- **aws-cloud-controller:** Provides interaction between the cluster and AWS service APIs and allows a cluster to leverage AWS resources.
+- **calico:** The container network used to connect each node to every other node in the cluster. Calico also supports network policy. Calico is one of many possible container networks that can be used by Kubernetes.
+- **coredns:** Provides DNS services to nodes in the cluster
+- **etcd:** The primary data store of all cluster state
+- **kube-apiserver:** The REST API server for managing the Kubernetes cluster
+- **kube-controller-manager:** Manager of all of the controllers in the cluster that monitor and change the cluster state when necessary
+- **kube-proxy:** Network proxy that runs on each node
+- **kube-scheduler:** Control plane process which assigns Pods to Nodes
+- **metrics-server:** Not an essential component of a Kubernetes cluster but it is used in this lab to provide metrics for viewing in the Kubernetes dashboard.
+- **ebs-csi:** Not an essential component of a Kubernetes cluster but is used to manage the lifecycle of Amazon EBS volumes for persistent volumes.

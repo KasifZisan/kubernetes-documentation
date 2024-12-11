@@ -1,148 +1,128 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="None" />
-      <link rel="shortcut icon" href="img/favicon.ico" />
-    <title>Kubernetes Documentation</title>
-    <link rel="stylesheet" href="css/theme.css" />
-    <link rel="stylesheet" href="css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
-    
-      <script>
-        // Current page data
-        var mkdocs_page_name = "Introduction to Kubernetes";
-        var mkdocs_page_input_path = "index.md";
-        var mkdocs_page_url = null;
-      </script>
-    
-    <!--[if lt IE 9]>
-      <script src="js/html5shiv.min.js"></script>
-    <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-      <script>hljs.highlightAll();</script> 
-</head>
-
-<body class="wy-body-for-nav" role="document">
-
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-    <div class="wy-side-scroll">
-      <div class="wy-side-nav-search">
-          <a href="." class="icon icon-home"> Kubernetes Documentation
-        </a><div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
-  </form>
-</div>
-      </div>
-
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href=".">Introduction to Kubernetes</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#kubernetes-overview">Kubernetes Overview</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#using-kubernetes">Using Kubernetes</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#kubernetes-for-operations">Kubernetes for Operations</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#kubernetes-feature-highlights">Kubernetes Feature Highlights</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#deploying-kubernetes">Deploying Kubernetes</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#single-node-kubernetes-clusters">Single-Node Kubernetes Clusters</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#single-node-kubernets-clusters-for-continuous-integration">Single-Node Kubernets Clusters for Continuous Integration</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#multi-node-kubernetes-clusters">Multi-Node Kubernetes Clusters</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#kubernetes-architecture">Kubernetes Architecture</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#scheduling">Scheduling</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#kubernetes-pods">Kubernetes Pods</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#kubernetes-services">Kubernetes services</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#kubernetes-deployments">Kubernetes Deployments</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#interacting-with-kubernetes">Interacting with Kubernetes</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#example-kubectl-commands">Example Kubectl commands</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#pods">Pods</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#whats-in-a-pod-declaration">What's in a Pod Declaration</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#manifest-files">Manifest Files</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#manifests-in-action">Manifests in Action</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#services">Services</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#example-manifest">Example Manifest</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#multi-container-pods">Multi-Container Pods</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#kubernetes-namespaces">Kubernetes Namespaces</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#service-discovery">Service Discovery</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#service-discovery-meachnisms">Service Discovery Meachnisms</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#deployments">Deployments</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#autoscaling">Autoscaling</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#metrics">Metrics</a>
-    </li>
-        </ul>
-    </li>
-    </ul>
-                </li>
-              </ul>
-      </div>
-    </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href=".">Kubernetes Documentation</a>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="None">
         
-      </nav>
-      <div class="wy-nav-content">
-        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Introduction to Kubernetes</li>
-    <li class="wy-breadcrumbs-aside">
-    </li>
-  </ul>
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-            <div class="section" itemprop="articleBody">
-              
-                <h1 id="introduction-to-kubernetes">Introduction to Kubernetes</h1>
+        
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>Kubernetes Documentation</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body class="homepage">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href=".">Kubernetes Documentation</a>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-light">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#introduction-to-kubernetes" class="nav-link">Introduction to Kubernetes</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#kubernetes-overview" class="nav-link">Kubernetes Overview</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#deploying-kubernetes" class="nav-link">Deploying Kubernetes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#kubernetes-architecture" class="nav-link">Kubernetes Architecture</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#interacting-with-kubernetes" class="nav-link">Interacting with Kubernetes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#pods" class="nav-link">Pods</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#services" class="nav-link">Services</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#multi-container-pods" class="nav-link">Multi-Container Pods</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#service-discovery" class="nav-link">Service Discovery</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#deployments" class="nav-link">Deployments</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#autoscaling" class="nav-link">Autoscaling</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#rolling-updates-and-rollbacks" class="nav-link">Rolling Updates and Rollbacks</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#probes" class="nav-link">Probes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#init-containers" class="nav-link">Init Containers</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#volumes" class="nav-link">Volumes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#configmaps-and-secrets" class="nav-link">ConfigMaps and Secrets</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#kubernetes-ecosystem" class="nav-link">Kubernetes Ecosystem</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="introduction-to-kubernetes">Introduction to Kubernetes</h1>
 <h2 id="kubernetes-overview">Kubernetes Overview</h2>
 <p>Open-source conainer orchestration tool designed to automate deploying, scaling, and operating containerized applications.</p>
 <ul>
@@ -434,48 +414,214 @@ spec:
 <li>Several manifest files are used to deploy Metrics server</li>
 </ul>
 <p>Autoscaling will need the metrics server to run and collect the metrics. And then autoscaler will increaes or decrease replicas based on the metircs and communicate with the Metrics API.</p>
-              
+<h2 id="rolling-updates-and-rollbacks">Rolling Updates and Rollbacks</h2>
+<h4 id="rollouts">Rollouts</h4>
+<ul>
+<li>Rollouts update Deployments</li>
+<li>Any changes to the Deployment template will trigger a rollout</li>
+</ul>
+<h4 id="rolling-updates">Rolling Updates</h4>
+<ul>
+<li>Deployments have different rollout strategies but Kubernetes uses Rolling Updates by default.</li>
+<li>Replicas are updated in groups, instead of all-at-once, until the rollout is complete. This allows service to continue <strong>uninterrupted</strong> until the updates rollout.</li>
+<li>But in Rolling Updates both new and old version are running for some time, so it should be handled gracefully.</li>
+<li>The alternative of this is the - <strong>recreate strategy</strong>, where all the running pods are shut down and then deployed again. But this will also increase down time.</li>
+<li><code>kubectl</code> has commands to check, pause, resume and rollback (undo) rollouts.</li>
+</ul>
+<pre><code class="language-yaml">spec:
+  strategy:
+    rollingUpdate:
+
+      # how many replicas over the desired total are allowed during a rollout
+      # a higer surge allows new pods to be created than older pods to be deleted
+      maxSurge: 25% 
+
+      # max unavailable tells how many old pods can be deleted without new pods being ready
+      maxUnavailable: 25%
+
+      # the default is 25% for both
+
+    type: RollingUpdate
+</code></pre>
+<p>You can perform rollouts with <code>kubectl rollout</code> command. For example you can use - <code>kubectl rollout -n deployments status deployment app-tier</code>. Here, <code>-n</code> is used to mention the namespace, <code>status</code> is used to show the status of the rollout and <code>app-tier</code> is the tier name. </p>
+<p>To pause a rollout you can use - <code>kubectl rollout -n deployments pause deployment app-tier</code>. Pausing a rollout won't delete the already created pods but it will stop the creation of any new pods.</p>
+<p>To resume a rollout you can use - <code>kubectl rollout -n deployments resume deployment app-tier</code></p>
+<h4 id="rollback">Rollback</h4>
+<p>If you want to rollback to the previous version, you can use - <code>kubectl rollout -n deployments undo deployment app-tier</code>. Here the <code>undo</code> commands is doing the rollback. If you want to rollback to a specific version then you can use the command - <code>kubectl rollout history -n deployments deployment app-tier</code> and then grab the specific version and pass it into that.</p>
+<h2 id="probes">Probes</h2>
+<p>Kubernets assumes that the Pods are ready as soon as the containers starts, but that is not always the case. For example, if the container needs some time to warm up, kubernetes should wait before sending any traffic to the pod. It is also possible that the Pod was functional but then it became unresponsive for some reason, maybe it went into a deadlock state, in this case Kubernetes should wait before sending any requests to that Pod.</p>
+<p>Kubernetes has solutions to all these issues using <strong>Probes</strong>.</p>
+<ul>
+<li>Readiness Probes - Also referred to as Health Checks<ul>
+<li>Used to check when a Pod is ready to serve traffic/handle requests</li>
+<li>Useful after startup to chek external dependencies</li>
+<li>Readiness Probes set the Pod's ready condition. Services only send traffic to ready Pods. Probes integrate with Services to make sure this.</li>
+</ul>
+</li>
+<li>Liveness Probes - Used to detect if a pod has entered into a broken state<ul>
+<li>Kubernetes will restart the Pod for you. This is the Key difference between Readiness and Liveness probes.</li>
+<li>Declared in the same way as Readiness probes.</li>
+</ul>
+</li>
+</ul>
+<h4 id="declaring-probes">Declaring Probes</h4>
+<ul>
+<li>Probes can be declared in a Pod's container</li>
+<li>All containers probes must pass for the Pod to pass</li>
+<li>Probe actions can be a command that runs in the container, an HTTP GET request, or opeaning a TCP socket</li>
+<li>By default, a probe checks the Pod every 10 seconds</li>
+</ul>
+<h2 id="init-containers">Init Containers</h2>
+<p>Sometimes you need to wait for a service, downloads, dynamic or decisions before starting a Pod's containers. The code that checks this could be grounded in the main application. But it is best practice to seperate initialization wait logic from the container Image. However, Initialization is tightly coupled to the main application (belongs to the Pod). </p>
+<p>So, Kubernetes provides us a way in the form of <strong>Init Containers</strong>. Init Containers allow you to run initialization tasks before starting the main container(s).</p>
+<ul>
+<li>Pods can declare any number of init containers</li>
+<li>Init containers run in order and run to completion</li>
+<li>They can use their own images and this can provide some benefits</li>
+<li>Easy way to block or delay starting an application until some pre-defined conditions are met</li>
+<li>Run every time a Pod is created</li>
+</ul>
+<h2 id="volumes">Volumes</h2>
+<p>Containers in a Pod share their own network stack that each has their own file system. It can be sometimes useful to share data between containers in a  Pod. Lifetime of container file system is limited to the container's lifetime. So this can lead to unexpected consequences if a container restarts.</p>
+<h4 id="pod-storage-in-kubernetes">Pod Storage in Kubernetes</h4>
+<ul>
+<li>Two high level storage options: Volumes and Persistent Volumes</li>
+<li>Used by mounting directory in one or more containers in a Pod</li>
+<li>Pods can use multiple Volumes and Persistent Volumes</li>
+<li>Difference between Volumes and Persistent Volumes is how their lifetime is managed. One has a lifetime same to the Pod's lifetime the other one is independent to the Pod's lifetime.</li>
+</ul>
+<h4 id="volumes_1">Volumes</h4>
+<ul>
+<li>Volumes are tied to a pod and their lifecycle.</li>
+<li>Share data between containers and tolerate container restarts</li>
+<li>Use for non-durable storage that is deleted with the Pod</li>
+<li>Default Volume type is <code>emptyDir</code>. Any data in the directory remains when the Pod is restarted but the data is deleted if the Pod is deleted</li>
+<li>If pod and the data is stored on a specific node but then the pod is restarted on a different node, then the data will be lost</li>
+</ul>
+<h4 id="persistent-volumes">Persistent Volumes</h4>
+<ul>
+<li>Independent of Pod's lifetime</li>
+<li>Pods claim persistent volumes to use throughout their lifetime.</li>
+<li>Can be mounted by multiple Pods on different Nodes if underlying storage supports it</li>
+<li>Can be provisioned statically in advance or dynamically on-demand</li>
+</ul>
+<h4 id="persistent-volume-claims-pvc">Persistent Volume Claims (PVC)</h4>
+<p>Pods must send request to a persistent volume to claim it.</p>
+<p>Persistent volume claims - </p>
+<ul>
+<li>Describe a Pod's request for Persistent Volume storage</li>
+<li>Include how much storage, type of storage and access mode. The access mode describes the volume whether it is mounted in read-only, read-write or read-write many</li>
+<li>Access modes can be read-write once, read-only many or read-write many</li>
+<li>PVC stays pending if no PV can satisfy it and dyanmic provisioning is not enabled</li>
+<li>Connects to a Pod through a Volume of type PVC</li>
+</ul>
+<p><strong>Supported Durable Storage:</strong> Amazon EBS (Elastic Block Service)</p>
+<h2 id="configmaps-and-secrets">ConfigMaps and Secrets</h2>
+<p>Up until now, the Deployment template <code>spec</code> has contained all of the configurations required by the Pod. This is better than storing the configuration inside the binary or container image. But adding the configuration in the pod spec can make it a lot less portable. And if the configuration includes sensitive information such as API keys and passwords, it might present a security issue.</p>
+<p>Kubernetes provides us with ConfigMaps and Secrets to store the Configurations and Secrets. This results in more portable manifests. But the cluster admin also need to ensure that all the proper encryption and safeguards are in place to make sure that the secrets are actually safe. Secrets have specialized types for storing credentials and TLS certs</p>
+<h4 id="using-configmaps-and-secrets">Using ConfigMaps and Secrets</h4>
+<ul>
+<li>ConfigMaps and Secrets store data in key-value pairs</li>
+<li>Pods must reference ConfigMaps and Secrets to use their data</li>
+<li>Pods can use the data by mounting them as files or through a volume or as environment variables</li>
+</ul>
+<h2 id="kubernetes-ecosystem">Kubernetes Ecosystem</h2>
+<h4 id="helm">Helm</h4>
+<ul>
+<li>Helm is Kubernetes Package Manager</li>
+<li>Packages are called <strong>charts</strong> and are installed on your cluster using the Helm CLI. We use the Helm CLI to install and udpate charts as it releases on the cluster</li>
+<li>Charts contain all the resources like deployments and services to run the application</li>
+<li>Helm charts make it easy to share complete application</li>
+</ul>
+<h4 id="prometheus">Prometheus</h4>
+<ul>
+<li>Open-source monitoring and alerting system</li>
+<li>A server for pulling time-series metric data and storing it</li>
+<li>Commonly paired with Grafana for visualizations and Dashboards</li>
+<li>Define alert rules and send notifications</li>
+<li>Easily installed via Helm charts</li>
+</ul></div>
             </div>
-          </div><footer>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <!-- Copyright etc -->
-  </div>
-
-  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-</footer>
-          
         </div>
-      </div>
 
-    </section>
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="js/jquery-3.6.0.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script>
+            var base_url = ".",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js"></script>
+        <script src="search/main.js"></script>
 
-  </div>
-
-  <div class="rst-versions" role="note" aria-label="Versions">
-  <span class="rst-current-version" data-toggle="rst-current-version">
-    
-    
-    
-  </span>
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
 </div>
-    <script src="js/jquery-3.6.0.min.js"></script>
-    <script>var base_url = ".";</script>
-    <script src="js/theme_extra.js"></script>
-    <script src="js/theme.js"></script>
-      <script src="search/main.js"></script>
-    <script>
-        jQuery(function () {
-            SphinxRtdTheme.Navigation.enable(true);
-        });
-    </script>
 
-</body>
+    </body>
 </html>
 
 <!--
 MkDocs version : 1.5.3
-Build Date UTC : 2024-12-05 07:01:53.182673+00:00
+Build Date UTC : 2024-12-08 05:45:20.019719+00:00
 -->
