@@ -130,6 +130,4 @@ helm search repo cloudcademy
 
 helm install ca-demo1 local/cloudcademyapp
 ```
-## Templates
-
 
