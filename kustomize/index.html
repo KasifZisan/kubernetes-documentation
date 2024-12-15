@@ -9,10 +9,8 @@
       
       
       
-        <link rel="prev" href="../helm/">
+        <link rel="prev" href="../kubernetes-dashboard/">
       
-      
-        <link rel="next" href="../kustomize/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +18,7 @@
     
     
       
-        <title>Kubernetes Dashboard - Kubernetes Documentation</title>
+        <title>Kustomize - Kubernetes Documentation</title>
       
     
     
@@ -71,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#kubernetes-dashboard-install-and-configure" class="md-skip">
+        <a href="#kustomize" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Kubernetes Dashboard
+              Kustomize
             
           </span>
         </div>
@@ -234,6 +232,25 @@
       
   
   
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes-dashboard/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kubernetes Dashboard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -245,27 +262,18 @@
         
       
       
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
   
   <span class="md-ellipsis">
-    Kubernetes Dashboard
+    Kustomize
   </span>
   
 
-      </a>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../kustomize/" class="md-nav__link">
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -274,6 +282,60 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#working-with-kustomize" class="md-nav__link">
+    Working with Kustomize
+  </a>
+  
+    <nav class="md-nav" aria-label="Working with Kustomize">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deploy-basedevelopment" class="md-nav__link">
+    Deploy Base/Development
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-staging" class="md-nav__link">
+    Deploy Staging
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-production" class="md-nav__link">
+    Deploy Production
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -298,6 +360,48 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#working-with-kustomize" class="md-nav__link">
+    Working with Kustomize
+  </a>
+  
+    <nav class="md-nav" aria-label="Working with Kustomize">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deploy-basedevelopment" class="md-nav__link">
+    Deploy Base/Development
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-staging" class="md-nav__link">
+    Deploy Staging
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-production" class="md-nav__link">
+    Deploy Production
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -311,40 +415,70 @@
                   
 
 
-<h1 id="kubernetes-dashboard-install-and-configure">Kubernetes Dashboard Install and Configure</h1>
-<p>The Kubernetes Dashboard is a web-based Kubernetes user interface. You can use Kubernetes Dashboard to deploy containerized applications to a Kubernetes cluster, troubleshoot your containerized application, and/or manage other cluster resources.</p>
-<ul>
-<li>Create a new <code>monitoring</code> namespace within the cluster - </li>
-</ul>
-<pre><code class="language-bash">kubectl create ns monitoring
+<h1 id="kustomize">Kustomize</h1>
+<h2 id="working-with-kustomize">Working with Kustomize</h2>
+<h4 id="deploy-basedevelopment">Deploy Base/Development</h4>
+<p>You can have two directories - <strong>base</strong> and <strong>overlay</strong>. The base directory should contain the deployment, service, configMap, ingress and kustomization file for the <strong>baseline</strong> or <strong>development</strong> environment. They overlay directory can contain two other directories which are - <strong>staging</strong> and <strong>production</strong>.</p>
+<p>The <code>kustomization.yaml</code> file can look like this - </p>
+<pre><code class="language-yaml">commonLabels:
+ app: webapp
+ env: base
+ version: &quot;1.02&quot;
+ org: cloudacademy.com
+ team: devops.labs
+ developer: jeremy.cook
+
+resources:
+- configmap.yaml
+- deployment.yaml
+- service.yaml
+- ingress.yaml 
+</code></pre>
+<p>The <code>commonLabels</code> section defines common metadata labels which get copied into each of the 4 manifest files declared in the <code>resources</code> section when Kustomize is executed.</p>
+<p>Confirm that you are in the <code>kustomize</code> directory. Use <code>Kustomize</code> to generate and output the set of API resources as declared within the <code>kustomization.yaml</code> file within the <code>base</code> directory. In the terminal execute the following command:</p>
+<pre><code class="language-bash">kubectl kustomize base
+</code></pre>
+<p>Now use Kustomize to deploy the same baseline set of resources into the provided Kubernetes cluster. In the terminal execute the following command:</p>
+<pre><code class="language-bash">kubectl apply -k base
+</code></pre>
+<p>Confirm that all cluster resources were created successfully. In the terminal execute the following command:</p>
+<pre><code class="language-bash">kubectl get all
+</code></pre>
+<p>The sample web application should now be ready to serve Internet based traffic via its assigned FQDN host declared within the base/ingress.yaml file. </p>
+<h4 id="deploy-staging">Deploy Staging</h4>
+<p>The <code>staging</code> directory might contain a <code>kustomization.yaml</code> file like this - </p>
+<pre><code class="language-yaml">namePrefix: stg-
+
+commonLabels:
+  env: staging
+
+commonAnnotations:
+  note: staging deployment of cloudacademy lab webapp
+
+bases:
+- ../../base
+
+patchesStrategicMerge:
+- configmap.yaml
+- ingress.yaml
 </code></pre>
 <ul>
-<li>Using Helm, install the Kubernetes Dashboard using the publicly available Kubernetes Dashboard Helm Chart. Deploy the dashboard into the monitoring namespace within the lab provided cluster. Use the following command - </li>
+<li><code>namePrefix</code> defines a string that is added to the start of all resource names</li>
+<li><code>commonLabels</code> defines metadata labels that are added to all resources</li>
+<li><code>commonAnnotations</code> defines metadata annotations that are added to all resources</li>
+<li><code>bases</code> defines the base directory which is to be merge patched with the resources declared in the <code>patchesStrategicMerge</code> section</li>
 </ul>
-<pre><code class="language-bash">{
-helm repo add k8s-dashboard https://kubernetes.github.io/dashboard
-helm repo update
-helm install k8s-dashboard --namespace monitoring k8s-dashboard/kubernetes-dashboard --set=protocolHttp=true --set=serviceAccount.create=true --set=serviceAccount.name=k8sdash-serviceaccount --version 3.0.2
-}
+<p>Use Kustomize to generate and output the set of API resources as declared within the kustomization.yaml file within the staging (current) directory. In the terminal execute the following command:</p>
+<pre><code class="language-bash">kubectl kustomize .
 </code></pre>
-<ul>
-<li>Establish permissions within the cluster to allow the Kubernetes Dashboard to read and write all cluster resources -</li>
-</ul>
-<pre><code class="language-bash">kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=monitoring:k8sdash-serviceaccount
+<p>Now use Kustomize to deploy the staging generated set of resources into the Kubernetes cluster. In the terminal execute the following command:</p>
+<pre><code class="language-bash">kubectl apply -k .
 </code></pre>
-<ul>
-<li>The Kubernetes Dashboard web interface now needs to be exposed to the Internet so that you can browse to it. To do so, create a new NodePort based Service, and expose the web admin interface on port 30990. Execute the following command - </li>
-</ul>
-<pre><code class="language-bash">{
-kubectl expose deployment k8s-dashboard-kubernetes-dashboard --type=NodePort --name=k8s-dashboard --port=30990 --target-port=9090 -n monitoring
-kubectl patch service k8s-dashboard -n monitoring -p '{&quot;spec&quot;:{&quot;ports&quot;:[{&quot;nodePort&quot;: 30990, &quot;port&quot;: 30990, &quot;protocol&quot;: &quot;TCP&quot;, &quot;targetPort&quot;: 9090}]}}'
-}
+<p>Confirm that all staging cluster resources were created successfully. In the terminal execute the following command:</p>
+<pre><code class="language-bash">kubectl get all -l env=staging
 </code></pre>
-<ul>
-<li>Get the public IP address of the Kubernetes cluster that Prometheus has been deployed into (it is in the Flask code). In the terminal execute the following command:</li>
-</ul>
-<pre><code class="language-bash">export | grep K8S_CLUSTER_PUBLICIP
-</code></pre>
+<h4 id="deploy-production">Deploy Production</h4>
+<p>You can deploy production the same way you have deployed Staging.</p>
 
 
 
