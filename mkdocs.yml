@@ -2,6 +2,8 @@ site_name: Kubernetes Documentation
 nav:
   - Kubernetes: index.md
   - Helm: helm.md
+  - Kubernetes Dashboard: kubernetes-dashboard.md
+  - Kustomize: kustomize.md
 theme:
   name: material
   nav_style: dark
