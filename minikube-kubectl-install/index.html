@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../helm/">
+        <link rel="prev" href="..">
       
       
-        <link rel="next" href="../kustomize/">
+        <link rel="next" href="../helm/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Kubernetes Dashboard - Kubernetes Documentation</title>
+        <title>Minikube & Kubectl - Kubernetes Documentation</title>
       
     
     
@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#kubernetes-dashboard-install-and-configure" class="md-skip">
+        <a href="#minikube-and-kubectl-install" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Kubernetes Dashboard
+              Minikube & Kubectl
             
           </span>
         </div>
@@ -215,9 +215,29 @@
       
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../minikube-kubectl-install/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Minikube & Kubectl
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -226,6 +246,53 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#kubectl" class="md-nav__link">
+    Kubectl
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#minikube" class="md-nav__link">
+    Minikube
+  </a>
+  
+    <nav class="md-nav" aria-label="Minikube">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#starting-a-minikube-cluster" class="md-nav__link">
+    Starting a Minikube Cluster
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -253,18 +320,9 @@
       
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../kubernetes-dashboard/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -273,7 +331,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -317,6 +374,41 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#kubectl" class="md-nav__link">
+    Kubectl
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#minikube" class="md-nav__link">
+    Minikube
+  </a>
+  
+    <nav class="md-nav" aria-label="Minikube">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#starting-a-minikube-cluster" class="md-nav__link">
+    Starting a Minikube Cluster
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -330,40 +422,37 @@
                   
 
 
-<h1 id="kubernetes-dashboard-install-and-configure">Kubernetes Dashboard Install and Configure</h1>
-<p>The Kubernetes Dashboard is a web-based Kubernetes user interface. You can use Kubernetes Dashboard to deploy containerized applications to a Kubernetes cluster, troubleshoot your containerized application, and/or manage other cluster resources.</p>
+<h1 id="minikube-and-kubectl-install">Minikube and Kubectl Install</h1>
+<h2 id="kubectl">Kubectl</h2>
 <ul>
-<li>Create a new <code>monitoring</code> namespace within the cluster - </li>
+<li>First check if <code>kubectl</code> is installed - <code>kubectl version --client</code>. If it is not installed, then we have to install <code>kubectl</code>.</li>
+<li>Download kubectl - <code>curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"</code></li>
+<li>Validate the binary<ul>
+<li>Download the kubectl checksum file - <code>curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"</code></li>
+<li>Validate the kubectl binary against the checksum file - <code>echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check</code></li>
+<li><code>if [ $? -eq 0 ]; then
+          echo "Step 4: Checksum is valid."
+     else
+          echo "Step 4: Checksum validation failed. Exiting..."
+          exit 1
+     fi</code></li>
 </ul>
-<pre><code class="language-bash">kubectl create ns monitoring
-</code></pre>
+</li>
+<li>Install kubectl - <code>sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl</code></li>
+</ul>
+<h2 id="minikube">Minikube</h2>
 <ul>
-<li>Using Helm, install the Kubernetes Dashboard using the publicly available Kubernetes Dashboard Helm Chart. Deploy the dashboard into the monitoring namespace within the lab provided cluster. Use the following command - </li>
+<li>First check if <code>minikube</code> is installed - <code>minikube version</code></li>
+<li>Download Minikube - <code>curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64</code></li>
+<li>Install Minikube - <code>sudo install minikube-linux-amd64 /usr/local/bin/minikube &amp;&amp; rm minikube-linux-amd64</code></li>
+<li>Check if minikube is running - <code>minikube status --format '{{.Host}}' | grep "Running"</code></li>
 </ul>
-<pre><code class="language-bash">{
-helm repo add k8s-dashboard https://kubernetes.github.io/dashboard
-helm repo update
-helm install k8s-dashboard --namespace monitoring k8s-dashboard/kubernetes-dashboard --set=protocolHttp=true --set=serviceAccount.create=true --set=serviceAccount.name=k8sdash-serviceaccount --version 3.0.2
-}
+<h4 id="starting-a-minikube-cluster">Starting a Minikube Cluster</h4>
+<p>If you want to start a new cluster named <code>test-cluster</code> with 2 nodes (one control-plane and one worker node) -</p>
+<pre><code class="language-bash">minikube start --nodes 2 -p test-cluster --driver=docker
 </code></pre>
-<ul>
-<li>Establish permissions within the cluster to allow the Kubernetes Dashboard to read and write all cluster resources -</li>
-</ul>
-<pre><code class="language-bash">kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=monitoring:k8sdash-serviceaccount
-</code></pre>
-<ul>
-<li>The Kubernetes Dashboard web interface now needs to be exposed to the Internet so that you can browse to it. To do so, create a new NodePort based Service, and expose the web admin interface on port 30990. Execute the following command - </li>
-</ul>
-<pre><code class="language-bash">{
-kubectl expose deployment k8s-dashboard-kubernetes-dashboard --type=NodePort --name=k8s-dashboard --port=30990 --target-port=9090 -n monitoring
-kubectl patch service k8s-dashboard -n monitoring -p '{&quot;spec&quot;:{&quot;ports&quot;:[{&quot;nodePort&quot;: 30990, &quot;port&quot;: 30990, &quot;protocol&quot;: &quot;TCP&quot;, &quot;targetPort&quot;: 9090}]}}'
-}
-</code></pre>
-<ul>
-<li>Get the public IP address of the Kubernetes cluster that Prometheus has been deployed into (it is in the Flask code). In the terminal execute the following command:</li>
-</ul>
-<pre><code class="language-bash">export | grep K8S_CLUSTER_PUBLICIP
-</code></pre>
+<p>To verify if <code>kubectl</code> has <code>kubernetes</code> access - <code>kubectl get nodes</code></p>
+<p>Get minikube cluster info - <code>kubectl cluster-info</code></p>
 
 
 
