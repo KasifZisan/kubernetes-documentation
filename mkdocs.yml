@@ -1,6 +1,7 @@
 site_name: Kubernetes Documentation
 nav:
   - Kubernetes: index.md
+  - Minikube & Kubectl: minikube-kubectl-install.md
   - Helm: helm.md
   - Kubernetes Dashboard: kubernetes-dashboard.md
   - Kustomize: kustomize.md
